@@ -1,17 +1,23 @@
 import React, { useState, useEffect }  from "react";
 import { Link } from "react-router-dom";
-import axios from "../../utils/axios.js";
+import axios from "../../utils/axios.jsx";
+// import axios from "axios";
+import noimage from "/noimage.png";
 
 function Topnav() {
 
    const [query, setquery] = useState("");
 //    console.log(query);
-const api_key = 'bda40107c84d59465bbd99dff6f7620b';
+   const [searches, setsearches] = useState([]);
+
 
    const GetSearches = async() => {
     try {
-        const d = await axios.get(`search/multi?api_key=${api_key}&query=${query}`);
-        console.log(d);
+        const {data} = await axios.get(`/search/multi?query=${query}`);
+        // console.log(d);
+        
+        setsearches(data.results);
+        // console.log(searches);
     } catch (error) {
         console.error( error);
         
@@ -32,12 +38,16 @@ useEffect(() => {
                <i onClick={() => setquery("")} className="text-zinc-400 text-3xl ri-close-circle-line"></i>
              )}
             
-
+            
             <div className="absolute w-[50%] max-h-[50vh] bg-zinc-200 top-[90%] overflow-auto rounded ">
-                {/* <Link className="hover:text-black hover:bg-zinc-400 duration-300 font-semibold text-zinc-600 w-[100%] p-10 flex justify-start items-center border-b-4 border-zinc-100 ">
-                   <img src="" alt="" />
-                   <span>Hello everyone</span>
-                </Link> */}
+            {searches.map((s,i) => (
+                 <Link key={i} className="hover:text-black hover:bg-zinc-400 duration-300 font-semibold text-zinc-600 w-[100%] p-10 flex justify-start items-center border-b-4 border-zinc-100 ">
+                   <img className="w-[20vh] h-[12vh] object-cover rounded-lg mr-7 shadow-lg" 
+                   src={s.backdrop_path || s.profile_path ? `https://image.tmdb.org/t/p/original/${s.backdrop_path || s.profile_path}`:noimage} alt="" />
+                   <span> {s.name || s.title || s.original_name || s.original_title} </span>
+                </Link> 
+            ))}
+                
                 
             </div>
         </div>
