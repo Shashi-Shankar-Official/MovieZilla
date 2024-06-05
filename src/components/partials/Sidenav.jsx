@@ -9,7 +9,7 @@ function Sidenav() {
         <div className='w-[20%] h-full border-r-2 border-zinc-400 p-10'>
             <h1 className="text-2xl text-white font-bold">
             <i className=" text-[#6556CD] ri-tv-line text-2xl mr-2"></i>
-            <span className="text-2xl">Baburao</span>
+            <span className="text-2xl">MovieZilla</span>
             </h1>
             <nav className="flex flex-col text-zinc-400 text-xl gap-3">
                 <h1 className="text-white font-semibold text-xl mt-10 my-5">New Feeds</h1>
