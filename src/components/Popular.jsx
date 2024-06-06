@@ -1,31 +1,29 @@
 import React, {useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Topnav from './Topnav';
-import Dropdown from './Dropdown';
-import axios from "../../utils/axios.jsx";
-import Cards from './Cards.jsx';
-import Loding from './Loding.jsx';
+import Topnav from '../components/partials/Topnav.jsx';
+import Dropdown from '../components/partials/Dropdown.jsx';
+import axios from '../utils/axios.jsx'
+import Cards from '../components/partials/Cards.jsx';
+import Loding from '../components/partials/Loding.jsx';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
-
-function Trending() {
-    document.title = "MovieZilla | Trending  ";
+function Popular() {
+    document.title = "MovieZilla | Popular  ";
 
     const navigate = useNavigate();    
-    const [category,setcategory] = useState("all");
-    const [duration,setduration] = useState("day");
-    const [trending,settrending] = useState([]);
+    const [category,setcategory] = useState("movie");
+    const [popular,setpopular] = useState([]);
     const [page, setpage] = useState(1);
     const [hasMore, sethasMore] = useState(true);
 
-    
 
-    const GetTrending =  async() => {
+    const GetPopular =  async() => {
         try {
-            const {data} = await axios.get(`/trending/${category}/${duration}?page=${page}`);            
+            const {data} = await axios.get(`/${category}/popular?page=${page}`);  
+            // console.log(data);          
             // settrending(data.results);
             if(data.results.length > 0)  {
-                settrending((prevState) => [...prevState, ...data.results]);
+                setpopular((prevState) => [...prevState, ...data.results]);
                 setpage(page+1);
             } else {
                 sethasMore(false);
@@ -34,44 +32,44 @@ function Trending() {
             console.error( error);
         }
     }
-    // console.log(trending);
+    
 
     const refreshHandler = () => {
-        if(trending.length === 0) {
-            GetTrending();
+        if(popular.length === 0) {
+            GetPopular();
         } else {
             setpage(1);
-            settrending([1]);
-            GetTrending();
+            setpopular([1]);
+            GetPopular();
         }
     }
 
     useEffect(() => {
-        
         refreshHandler();
-    },[category,duration]);
+    },[category]);
 
-    return trending.length >0 ?  (
+
+    return popular.length >0 ?  (
         <div className=' w-screen h-screen'>
 
             <div className='w-full flex items-center'>                
                 <i onClick={() => navigate(-1)} 
                 className="ri-arrow-left-line text-2xl text-zinc-400 hover:text-[#6556CD] hover:bg-zinc-200 rounded-full px-3 mt-1"></i>
-                <h1 className='text-3xl font-semibold text-zinc-400'>Trending</h1>
+                <h1 className='text-3xl font-semibold text-zinc-400'>Popular</h1>
 
                 <Topnav />
                 <Dropdown title="Category" options={["movie", "tv", "all"]} func={(e) => setcategory(e.target.value)} />
                 <div className='w-[2%]' ></div>
-                <Dropdown title="Duration" options={["week", "day"]} func={(e) => setduration(e.target.value)} />
+                
             </div>
 
             <InfiniteScroll 
-               dataLength={trending.length}
-               next={GetTrending()}
+               dataLength={popular.length}
+               next={GetPopular()}
                hasMore={hasMore}
                loader={<h1>Loading...</h1>}
             >
-                <Cards data={trending} title={category} />
+                <Cards data={popular} title={category} />
             </InfiniteScroll>
 
             
@@ -80,4 +78,4 @@ function Trending() {
     ) : <Loding />;
 }
 
-export default Trending;
+export default Popular;
