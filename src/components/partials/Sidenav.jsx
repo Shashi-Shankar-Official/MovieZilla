@@ -18,13 +18,13 @@ function Sidenav() {
                 <Link to="/popular" className="hover:bg-[#6556CD] hover:text-white duration-300 p-5 rounded-lg ">
                     <i className="mr-2 ri-bard-fill text-zinc-100"></i>Popular
                 </Link>
-                <Link className="hover:bg-[#6556CD] hover:text-white duration-300 p-5 rounded-lg ">
+                <Link to="/movie" className="hover:bg-[#6556CD] hover:text-white duration-300 p-5 rounded-lg ">
                     <i className="mr-2 ri-movie-2-fill text-purple-400"></i>Movies
                 </Link>
-                <Link className="hover:bg-[#6556CD] hover:text-white duration-300 p-5 rounded-lg ">
+                <Link to="/tv_shows" className="hover:bg-[#6556CD] hover:text-white duration-300 p-5 rounded-lg ">
                     <i className="mr-2 ri-tv-2-fill text-pink-600"></i>Tv shows
                 </Link>
-                <Link className="hover:bg-[#6556CD] hover:text-white duration-300 p-5 rounded-lg ">
+                <Link to="/people" className="hover:bg-[#6556CD] hover:text-white duration-300 p-5 rounded-lg ">
                     <i className="mr-2 ri-team-line text-blue-400"></i>People
                 </Link>
                 
