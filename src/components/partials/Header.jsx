@@ -7,7 +7,7 @@ function Header({data}) {
         <div
   style={{
     background: `linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.7), rgba(0,0,0,.9)),
-                url(https://image.tmdb.org/t/p/original/${data.backdrop_path || data.poster_path || data.profile_path})`,
+                url(https://image.tmdb.org/t/p/original/${data.poster_path || data.profile_path || data.backdrop_path})`,
     backgroundPosition: "top-[40%]",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
