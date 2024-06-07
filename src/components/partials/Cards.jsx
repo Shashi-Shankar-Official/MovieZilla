@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function Cards({data, title}) {
     // console.log(data);
-    console.log(title);
+    // console.log(title);
     return (
         <div className='flex flex-wrap w-full h-full px-[3%] bg-[#1F1E24]'>
             {data.map((c,i) => (
