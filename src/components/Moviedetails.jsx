@@ -4,6 +4,7 @@ import { asyncloadmovie, removemovie } from "../store/actions/movieActions";
 import { useLocation, useParams } from "react-router-dom";
 import { Link, useNavigate } from 'react-router-dom';
 import Loding from "./partials/Loding";
+import HorizontalCards from "./partials/HorizontalCards";
 
 function Moviedetails() {
     const {pathname} = useLocation();
@@ -17,7 +18,7 @@ function Moviedetails() {
         return () => {
             dispatch(removemovie());
         }
-    },[]);
+    },[id]);
     return info ?  (
         <div style={{
             background: `linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.7), rgba(0,0,0,.9)),
@@ -26,7 +27,7 @@ function Moviedetails() {
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
           }}
-            className="w-screen h-screen px-[10%]" >
+            className="w-screen h-[140vh] px-[10%]" >
                 {/* part 1 navigation */}
             <nav className="h-[10vh] w-full text-zinc-100 flex gap-10 items-center text-xl">
             <Link onClick={() => navigate(-1)} 
@@ -105,11 +106,15 @@ function Moviedetails() {
                     }
                         
                 
-            </div>
-                
-            
-            
+            </div>     
 
+            {/* part 4 Recommendations and Similarity  */}
+            <hr  className="mt-5 border-none h-[2px] bg-zinc-500"/>
+            <h1 className="text-3xl text-white mt-10 font-semibold">Recommendations & Similar</h1>
+            <HorizontalCards className=""
+             data = {info.recommendations.length >0 ? info.recommendations : info.similar} />
+            
+            
         </div>
     ) : <Loding />;
 }
