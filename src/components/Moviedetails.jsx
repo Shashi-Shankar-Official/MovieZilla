@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { asyncloadmovie, removemovie } from "../store/actions/movieActions";
-import { useLocation, useParams } from "react-router-dom";
+import { Outlet, useLocation, useParams } from "react-router-dom";
 import { Link, useNavigate } from 'react-router-dom';
 import Loding from "./partials/Loding";
 import HorizontalCards from "./partials/HorizontalCards";
@@ -12,7 +12,7 @@ function Moviedetails() {
     const {id} = useParams();
     const {info} = useSelector(state => state.movie);
     const dispatch= useDispatch();
-    console.log(info);
+    // console.log(info);
     useEffect(() => {
         dispatch(asyncloadmovie(id));
         return () => {
@@ -27,7 +27,7 @@ function Moviedetails() {
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
           }}
-            className="w-screen h-[140vh] px-[10%]" >
+            className="relative w-screen h-[140vh] px-[10%]" >
                 {/* part 1 navigation */}
             <nav className="h-[10vh] w-full text-zinc-100 flex gap-10 items-center text-xl">
             <Link onClick={() => navigate(-1)} 
@@ -68,7 +68,7 @@ function Moviedetails() {
                     <h1 className="text-2xl mb-2 mt-5 ">Movie Translated</h1>
                     <p className="mb-10">{info.translations.join(", ")}</p>      
 
-                    <Link className="rounded-lg p-5 bg-[#6556CD] text-xl gap-2 items-center" to={`${pathname}/tailer`} >Play Trailer <i class="ri-play-circle-line"></i></Link>               
+                    <Link className="rounded-lg p-5 bg-[#6556CD] text-xl gap-2 items-center" to={`${pathname}/trailer`} >Play Trailer <i className="ri-play-circle-line"></i></Link>               
                     
                      
                 </div>
@@ -82,7 +82,7 @@ function Moviedetails() {
                         info.watchproviders.flatrate && 
                         <div className="flex gap-10 items-center text-zinc-200 ">
                           <h1 className="text-lg font-semibold">Available on platform</h1>
-                          {info.watchproviders.flatrate.map((w,i) => <img id={i} title={w.provider_name} className="w-[5vh] h-[5vh] object-cover rounded-lg"
+                          {info.watchproviders.flatrate.map((w,i) => <img key={i} title={w.provider_name} className="w-[5vh] h-[5vh] object-cover rounded-lg"
                         src={`https://image.tmdb.org/t/p/original/${w.logo_path}`} alt="" />)}
                         </div>
                     }
@@ -91,7 +91,7 @@ function Moviedetails() {
                     info.watchproviders.rent && 
                         <div className="flex gap-x-10 items-center text-zinc-200">
                           <h1 className="text-lg font-semibold">Available on Rent</h1>
-                          {info.watchproviders.rent.map((w,i) => <img id={i} title={w.provider_name} className="w-[5vh] h-[5vh] object-cover rounded-lg"
+                          {info.watchproviders.rent.map((w,i) => <img key={i} title={w.provider_name} className="w-[5vh] h-[5vh] object-cover rounded-lg"
                         src={`https://image.tmdb.org/t/p/original/${w.logo_path}`} alt="" />)}
                         </div>
                     }
@@ -100,7 +100,7 @@ function Moviedetails() {
                     info.watchproviders.buy && 
                         <div className="flex gap-10 items-center text-zinc-200">
                           <h1 className="text-lg font-semibold">Available to buy</h1>
-                          {info.watchproviders.buy.map((w,i) => <img id={i} title={w.provider_name} className="w-[5vh] h-[5vh] object-cover rounded-lg"
+                          {info.watchproviders.buy.map((w,i) => <img key={i} title={w.provider_name} className="w-[5vh] h-[5vh] object-cover rounded-lg"
                         src={`https://image.tmdb.org/t/p/original/${w.logo_path}`} alt="" />)}
                         </div>
                     }
@@ -114,7 +114,7 @@ function Moviedetails() {
             <HorizontalCards className=""
              data = {info.recommendations.length >0 ? info.recommendations : info.similar} />
             
-            
+            <Outlet />
         </div>
     ) : <Loding />;
 }
