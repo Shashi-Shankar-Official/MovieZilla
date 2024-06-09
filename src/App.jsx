@@ -11,6 +11,8 @@ import Tvdetails from "./components/Tvdetails.jsx";
 import Persondetails from "./components/Persondetails.jsx";
 import Trailer from "./components/partials/Trailer.jsx";
 import NotFound from "./components/partials/NotFound.jsx";
+import About from "./components/partials/About.jsx";
+import Contact from "./components/partials/Contact.jsx";
 
 function App() {
   return (
@@ -29,6 +31,8 @@ function App() {
         </Route>
         <Route path="/person" element={<People />} />
         <Route path="/person/details/:id" element={<Persondetails />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
          <Route path="*" element={<NotFound />} /> 
       </Routes>
     </div>

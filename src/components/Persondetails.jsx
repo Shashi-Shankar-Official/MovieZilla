@@ -22,7 +22,7 @@ function Persondetails() {
 
 
     return info ? (
-        <div className="px-[10%] w-screen flex flex-col bg-[#1F1E24] h-[150vh]">
+        <div className="px-[8%] w-screen flex flex-col bg-[#1F1E24] h-[130vh]">
 
             {/* part 1 navigation */}
             <nav className="h-[10vh] w-full text-zinc-100 flex gap-10 items-center text-xl">
@@ -65,7 +65,7 @@ function Persondetails() {
                 <div className="w-[80%] ml-[5%]">
                 <h1 className="text-6xl text-zinc-400 font-black my-5">{info.detail.name}</h1>
                 <h1 className="text-xl text-zinc-400 font-semibold ">Biography</h1>
-                <p className="text-zinc-400 mt-3 h-[15vh] overflow-y-auto">{info.detail.biography}</p>
+                <p className="text-zinc-400 mt-3 h-[14vh] overflow-y-auto">{info.detail.biography}</p>
 
                 <h1 className="text-lg font-semibold text-zinc-400 mt-5 ">Known For</h1>  
                 <HorizontalCards data={info.combinedCredits.cast} />              
