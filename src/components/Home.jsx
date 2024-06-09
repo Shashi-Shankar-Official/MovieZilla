@@ -41,9 +41,9 @@ const Home = () => {
     // console.log(wallpaper);
             
     return wallpaper && trending ? (
-        <>
+        <div className='w-screen flex flex-row h-[150vh]'>
         <Sidenav />
-        <div className='w-[80%] bg-[#1F1E24] overflow-auto overflow-x-hidden '>
+        <div className='w-[80%] bg-[#1F1E24] h-[150vh] overflow-auto overflow-x-hidden '>
             <Topnav  />
             <Header  data ={wallpaper}/>
 
@@ -56,7 +56,7 @@ const Home = () => {
             
             <HorizontalCards data={trending} func={setcategory} />
         </div>
-        </>
+        </div>
     ): <Loding />
 }
 

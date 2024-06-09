@@ -57,8 +57,6 @@ function Persondetails() {
                 <h1 className=" text-zinc-400 ">{info.detail.birthday}</h1>
                 <h1 className="text-lg text-zinc-400 font-semibold mt-3">Place of birth</h1>
                 <h1 className=" text-zinc-400 ">{info.detail.place_of_birth}</h1>
-                <h1 className="text-lg text-zinc-400 font-semibold mt-3">Also known as</h1>
-                <h1 className=" text-zinc-400 ">{info.detail.also_known_as.join(", ")}</h1>
                 </div>
 
                 {/* part 3 right details and information */}

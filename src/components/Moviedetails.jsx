@@ -27,7 +27,7 @@ function Moviedetails() {
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
           }}
-            className="relative w-screen h-[140vh] px-[10%]" >
+            className="relative w-screen h-[150vh] px-[10%]" >
                 {/* part 1 navigation */}
             <nav className="h-[10vh] w-full text-zinc-100 flex gap-10 items-center text-xl">
             <Link onClick={() => navigate(-1)} 

@@ -5,7 +5,7 @@ function Sidenav() {
     
 
     return(
-        <div className='w-[20%] h-full border-r-2 border-zinc-400 p-10'>
+        <div className='w-[20%] h-[150vh] bg-[#1F1E24] border-r-2 border-zinc-400 p-10'>
             <h1 className="text-2xl text-white font-bold">
             <i className=" text-[#6556CD] ri-tv-line text-2xl mr-2"></i>
             <span className="text-2xl">MovieZilla</span>
