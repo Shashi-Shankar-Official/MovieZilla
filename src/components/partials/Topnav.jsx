@@ -33,7 +33,7 @@ useEffect(() => {
             <i className=" text-zinc-400 text-3xl ri-search-line"></i>
             <input onChange={(e) => setquery(e.target.value)}
              value={query}
-             className="text-zinc-200 w-[50%] mx-10 p-5 rounded-lg text-xl outline-none border-none bg-transparent " type="text" placeholder="search anything" />
+             className="text-zinc-200 w-[50%] mx-10 p-5 rounded-lg text-xl outline border-none bg-transparent " type="text" placeholder="search anything" />
              {query.length >0 && (
                <i onClick={() => setquery("")} className="text-zinc-400 text-3xl ri-close-circle-line"></i>
              )}
