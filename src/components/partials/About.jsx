@@ -10,7 +10,7 @@ function About() {
         <div className="mx-[30%] px-5 text-center flex flex-col  justify-center  ">
             <h1 className="text-3xl font-semibold text-zinc-500 ">This is a movie website, created with <span className="text-3xl text-rose-500">&#9829;</span> by</h1>
             <h1 className="text-5xl font-bold text-zinc-300 italic">Shashi Shankar</h1>
-            <h1 className="text-3xl font-semibold text-zinc-500 mt-3 mb-3">&</h1>
+            <h1 className="text-3xl font-semibold text-zinc-500 mt-3 mb-3 italic">&</h1>
             <h1 className="text-5xl font-bold text-zinc-300 italic">Sachin Kumar</h1>
         </div>
         </>
