@@ -41,7 +41,7 @@ const Home = () => {
     // console.log(wallpaper);
             
     return wallpaper && trending ? (
-        <div className='w-screen flex flex-row h-[150vh]'>
+        <div className='w-screen flex flex-row h-full overflow-y-auto overflow-x-auto'>
         <Sidenav />
         <div className='w-[80%] bg-[#1F1E24] h-[150vh] overflow-auto overflow-x-hidden '>
             <Topnav  />
